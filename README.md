@@ -39,53 +39,51 @@ After initially analysing the suitability of the dataset for linear regression, 
 - Modeling using both Linear and Polynomial Regression, and also:
 - Support Vector Machines (SVM) for regression, appropriate for this continuous prediction task, and it will ultimately yield the best performance.
 
-Feature selection is refined using backward elimination (based on p-values) and ANOVA with F-test will be implemented to help us analyse the error of all the implemented models.
-Each model’s effectiveness is compared using R-squared values, helping determine the most accurate and best-fitted model: higher R-squared means better result, with 1 being the best.
-Lastly, the dataset is split into training and validation sets to evaluate model performance more reliably.
+Feature selection is refined using backward elimination (based on p-values) and ANOVA with F-test will be implemented to help us analyse the error of all the implemented models. Each model’s effectiveness is compared using R-squared values, helping determine the most accurate and best-fitted model: higher R-squared means better result, with 1 being the best. Lastly, the dataset is split into training and validation sets to evaluate model performance more reliably.
 
 # 3.	Methods
 
 The dataset, sourced from ZenRows (2021), contains 10,000 records of residential properties across the United States and includes 47 features such as price, location, and house characteristics.
 
-Key Processing Steps:
+#### Key Processing Steps:
 - Reduced to 11 core features: ID, Price, Address, City, Zipcode, Bedrooms, Bathrooms, Building Area, Latitude, and Longitude.
 - Removed rows with missing price values, resulting in 9,992 clean records.
 
-Handled missing data:
+#### Handled missing data:
 - Replaced "Not provided" to the column Address
 - Replaced "0" to column Zipcode.
 - Filled missing numerical values in the other columns (Beds, Baths, Building area, Latitude and longitude) with respective column means.
 
 The cleaned dataset is structured and ready for regression modeling, with appropriate data types and no critical missing values.
 
-The modeling process began by:
-1 - Installing necessary libraries and importing the cleaned dataset (us-cities-real-estate-sample-zenrows.csv),
-2 - Checking linear regression assumptions:
-- Independence: Checked via Pearson correlation.
-- Normality: Assessed using histograms of the target variable (Price).
-- Linearity: Visualized with scatter plots comparing Price to Beds, Baths, Building Area, Latitude, and Longitude.
-- Multicollinearity: Assessed with scatterplot matrix.
+## The modeling process began by:
+1. Installing necessary libraries and importing the cleaned dataset (us-cities-real-estate-sample-zenrows.csv),
+2. Checking linear regression assumptions:
+  - Independence: Checked via Pearson correlation.
+  - Normality: Assessed using histograms of the target variable (Price).
+  - Linearity: Visualized with scatter plots comparing Price to Beds, Baths, Building Area, Latitude, and Longitude.
+  - Multicollinearity: Assessed with scatterplot matrix.
 
 Due to unmet assumptions on the full dataset, a reduced dataset was created by filtering out houses priced above $500,000 (8,458 records). Both datasets were then standardized using the caret package to ensure all features contribute equally to modeling.
 
-Model Building & Evaluation:
+#### Model Building & Evaluation:
 1. Linear Regression (baseline)
-- Built on both full and reduced datasets.
-- Showed poor model fit (low R², non-constant variance of residuals).
-- Served as a naive benchmark.
+  - Built on both full and reduced datasets.
+  - Showed poor model fit (low R², non-constant variance of residuals).
+  - Served as a naive benchmark.
 
 2. Polynomial Regression
-- Showed better fit than linear regression.
-- Evaluated with:
-  - Coefficient significance (p-values)
-  - Diagnostic plots (Q-Q plot, residuals vs fitted, scale-location, leverage)
-- ANOVA ‘F’ test confirmed better performance over the linear model.
-- Final model (after backward elimination of variables with p > 0.05) retained Baths, Building Area, and Latitude as significant predictors:
-- Polynomial model (fit) emerged as the best-performing regression model.
+  - Showed better fit than linear regression.
+  - Evaluated with:
+    - Coefficient significance (p-values)
+    - Diagnostic plots (Q-Q plot, residuals vs fitted, scale-location, leverage)
+  - ANOVA ‘F’ test confirmed better performance over the linear model.
+  - Final model (after backward elimination of variables with p > 0.05) retained Baths, Building Area, and Latitude as significant predictors:
+  - Polynomial model (fit) emerged as the best-performing regression model.
 
 This process highlighted that while a simple linear model was insufficient, a well-tuned polynomial regression significantly improved predictive performance and interpretability.
 
-Outlier-Free Dataset Modeling & Prediction
+#### Outlier-Free Dataset Modeling & Prediction
 The next phase focuses on the cleaned dataset without outliers (new_df, 8,458 records), where:
 - The data is standardized again (normdata_noout).
 - Both linear and polynomial models are built.
@@ -93,32 +91,31 @@ The next phase focuses on the cleaned dataset without outliers (new_df, 8,458 re
     - linear_fit_noout (reduced linear model)
     - poly_fit_noout (reduced polynomial model with key predictors: Baths, Latitude, Longitude)
 
-✅ Best Models Identified
+## ✅ Best Models Identified
 Using ANOVA F-tests, the best-performing models are:
 
 - On outlier-free data: poly_model_noout and poly_fit_noout
 - On full dataset: poly_model and fit
 
 These are visualized with ggplot to compare predictions and residuals.
-
 All selected models are then used to make predictions, with:
 - Residual plots and prediction vs actual plots
 - Prediction intervals overlaid on data
 - R² values calculated to measure model fit
 
 
-🧪 Train/Test Split & Model Validation
+## 🧪 Train/Test Split & Model Validation
 Each dataset (full and outlier-free) is split:
 - 70% Training / 30% Validation, with set.seed(1)
-Cleaned dataset: 5,920 training / 2,538 testing
-Full dataset: 6,994 training / 3,006 testing
+  Cleaned dataset: 5,920 training / 2,538 testing
+  Full dataset: 6,994 training / 3,006 testing
 
 For each best model:
 - Trained on the training set
 - Used to predict validation set outcomes
 - R² scores computed for both training and validation sets to assess model generalization
 
-🤖 Support Vector Regression (SVM)
+## 🤖 Support Vector Regression (SVM)
 To improve performance, Support Vector Machines (SVM) are applied to the outlier-free dataset, which already performed best with regression models.
 
 Process:
@@ -128,9 +125,7 @@ Process:
 - SVM model built using e1071::svm() with default parameters
 - Model trained and used to predict house prices
 
-Results visualized and evaluated:
-
-📊 Evaluation Metrics:
+## 📊 Evaluation Metrics:
 MSE (Mean Squared Error)
 MAE (Mean Absolute Error)
 RMSE (Root Mean Squared Error)
@@ -140,9 +135,7 @@ R² score
 
 # 4.	Results 
 
-📊 Results & Model Evaluation Summary:
-
-🔍 Linear Assumptions & Dataset Suitability
+#### Linear Assumptions & Dataset Suitability
 ✅ Full Dataset:
 - No strong linear relationships among predictors (e.g., Baths & Beds have the highest correlation, r = 0.32).
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/3a91f0b0-cdd1-4f3b-b223-145918219a53)
