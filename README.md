@@ -122,6 +122,7 @@ Process:
 - Data split into 70/30 train/test sets
 - We will define the svm model with default parameters and fit it with the traindata, with the following script:
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/398f939f-7f82-44f1-ab77-6491ab9734b2)
+
 - SVM model built using e1071::svm() with default parameters
 - Model trained and used to predict house prices
 
@@ -139,8 +140,10 @@ R² score
 ✅ Full Dataset:
 - No strong linear relationships among predictors (e.g., Baths & Beds have the highest correlation, r = 0.32).
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/3a91f0b0-cdd1-4f3b-b223-145918219a53)
+  
 - Price (the dependent variable) is not normally distributed — it's right-skewed, violating linear regression assumptions.
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/95c08ae9-51e4-4cad-b0c0-bc6700740085)
+
 - Diagnostic plots show violations of homoscedasticity and potential bias.
 
 
@@ -148,12 +151,14 @@ R² score
 - Similar correlation patterns (e.g., Beds & Baths r = 0.20).
 - Slight improvement in distribution (still right-skewed).
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/463a80ff-3791-4129-99ca-c8ee1fec7f8a)
+  
 - Still fails linear regression assumptions, but less biased than the full dataset.
 
 🧮 Polynomial Regression Models
 🔧 Full Dataset:
 - poly_model shows significant predictors: Baths, Building Area, Latitude.
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/bc43c80d-b606-4418-8364-9cc6ead2bf8a)
+  
 - p-value: 2.401e-16 → model is statistically significant.
 - Diagnostic plots reveal bias and non-constant variance.
 - R² ≈ 0.0096 → low explanatory power.
@@ -168,15 +173,19 @@ Here below a plot which shows the fitting of the poly_model model to the full da
 - Less bias, better homoscedasticity, and superior performance than the full dataset model.
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/8913a497-be48-4cc7-8725-a2bfa9c7ac72)
+
 The residuals check of this model (shown in the next page) present in the Residuals vs Fitted plot with the red line being fitting well on the straight line, meaning that the model may be unbiased.
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/bc68bcc4-a38a-44f2-8988-7b85d7403468)
+
 In the Normal Q-Q plot some values appear to be okay, others however aren't: the graph has a S shape instead of a line, so we conclude that the model is not a perfectly unbiased estimate of the data.
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/5b93b59d-9d07-4ece-959e-c9d2f72643fd)
+
 The Scale-Location plot, appears to have a slight structure as the line is not really horizontal and the data is mostly concentrated on the right side, the model could indeed be biased.
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/8aa73079-d53f-4138-ba7b-866c5aab1ec2)
+
 Finally, the Residuals vs Leverage plot shows a particularly pronounced pattern on the data and the line is non straight, confirming again there could be indeed bias.
 From these diagnostic plots we can say that the model does not fit the assumption of homoscedasticity and may be biased.
   
@@ -187,9 +196,11 @@ From these diagnostic plots we can say that the model does not fit the assumptio
 The p-value of this model is significant (2.401e-16) which means that this model is a good fit for the observed data. All of the variables appear to be statistically significant, so we can reject the null hypothesis and we conclude that our model is statistically significant (even better than the previous model calculated with the full dataset).
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/c5af9d31-1b2c-4f5e-8b7a-1b1a8bebea12)
+
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/f1b1b6d9-7d26-4045-a072-69bc4e9749c3)
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/86e990b9-b756-46a6-b7a0-3c134bb26054)
+
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/6efe1105-fcae-4ad8-8d4d-208851d6e91d)
 
 📈 Model Comparison – R² Scores
@@ -276,6 +287,7 @@ A better approach may be:
 A summary of all the relevant results of all the models is shown in the summary table below:
 
 <img width="391" alt="image" src="https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/7845e94b-d170-44e1-801b-f11eecbecd05">
+
 From the table we can see that, generally, the dataset without outliers performs better than the full dataset. As we have seen, polynomial regressions outperform linear regressions, producing better statistics and results.
 
 
