@@ -138,6 +138,7 @@ R² score
 
 #### Linear Assumptions & Dataset Suitability
 ✅ Full Dataset:
+
 - No strong linear relationships among predictors (e.g., Baths & Beds have the highest correlation, r = 0.32).
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/3a91f0b0-cdd1-4f3b-b223-145918219a53)
   
@@ -146,8 +147,8 @@ R² score
 
 - Diagnostic plots show violations of homoscedasticity and potential bias.
 
-
 ✅ Dataset Without Outliers:
+
 - Similar correlation patterns (e.g., Beds & Baths r = 0.20).
 - Slight improvement in distribution (still right-skewed).
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/463a80ff-3791-4129-99ca-c8ee1fec7f8a)
@@ -155,7 +156,8 @@ R² score
 - Still fails linear regression assumptions, but less biased than the full dataset.
 
 #### 🧮 Polynomial Regression Models
-🔧 Full Dataset:
+
+✅ Full Dataset:
 - poly_model shows significant predictors: Baths, Building Area, Latitude.
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/bc43c80d-b606-4418-8364-9cc6ead2bf8a)
   
@@ -167,7 +169,7 @@ Here below a plot which shows the fitting of the poly_model model to the full da
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/c62fc51d-9e5d-45f9-9b8c-6578d8ab066f)
 
 
-🔧 Dataset Without Outliers:
+✅ Dataset Without Outliers:
 - poly_fit_noout has all significant predictors and better diagnostics.
 - p-value: 2.401e-16, R² ≈ 0.127
 - Less bias, better homoscedasticity, and superior performance than the full dataset model.
