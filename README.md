@@ -143,6 +143,7 @@ R² score
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/95c08ae9-51e4-4cad-b0c0-bc6700740085)
 - Diagnostic plots show violations of homoscedasticity and potential bias.
 
+
 ✅ Dataset Without Outliers:
 - Similar correlation patterns (e.g., Beds & Baths r = 0.20).
 - Slight improvement in distribution (still right-skewed).
@@ -190,7 +191,6 @@ The p-value of this model is significant (2.401e-16) which means that this model
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/86e990b9-b756-46a6-b7a0-3c134bb26054)
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/6efe1105-fcae-4ad8-8d4d-208851d6e91d)
-
 
 📈 Model Comparison – R² Scores
 Model	Dataset	R² Score
