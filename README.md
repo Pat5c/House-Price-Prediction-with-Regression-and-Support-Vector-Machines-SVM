@@ -56,7 +56,7 @@ The dataset, sourced from ZenRows (2021), contains 10,000 records of residential
 
 The cleaned dataset is structured and ready for regression modeling, with appropriate data types and no critical missing values.
 
-## The modeling process began by:
+#### The modeling process began by:
 1. Installing necessary libraries and importing the cleaned dataset (us-cities-real-estate-sample-zenrows.csv),
 2. Checking linear regression assumptions:
   - Independence: Checked via Pearson correlation.
@@ -91,7 +91,7 @@ The next phase focuses on the cleaned dataset without outliers (new_df, 8,458 re
     - linear_fit_noout (reduced linear model)
     - poly_fit_noout (reduced polynomial model with key predictors: Baths, Latitude, Longitude)
 
-## ✅ Best Models Identified
+#### ✅ Best Models Identified
 Using ANOVA F-tests, the best-performing models are:
 
 - On outlier-free data: poly_model_noout and poly_fit_noout
@@ -104,7 +104,7 @@ All selected models are then used to make predictions, with:
 - R² values calculated to measure model fit
 
 
-## 🧪 Train/Test Split & Model Validation
+#### 🧪 Train/Test Split & Model Validation
 Each dataset (full and outlier-free) is split:
 - 70% Training / 30% Validation, with set.seed(1)
   Cleaned dataset: 5,920 training / 2,538 testing
@@ -115,7 +115,7 @@ For each best model:
 - Used to predict validation set outcomes
 - R² scores computed for both training and validation sets to assess model generalization
 
-## 🤖 Support Vector Regression (SVM)
+#### 🤖 Support Vector Regression (SVM)
 To improve performance, Support Vector Machines (SVM) are applied to the outlier-free dataset, which already performed best with regression models.
 
 Process:
@@ -126,7 +126,7 @@ Process:
 - SVM model built using e1071::svm() with default parameters
 - Model trained and used to predict house prices
 
-## 📊 Evaluation Metrics:
+#### 📊 Evaluation Metrics:
 MSE (Mean Squared Error)
 MAE (Mean Absolute Error)
 RMSE (Root Mean Squared Error)
@@ -154,7 +154,7 @@ R² score
   
 - Still fails linear regression assumptions, but less biased than the full dataset.
 
-🧮 Polynomial Regression Models
+#### 🧮 Polynomial Regression Models
 🔧 Full Dataset:
 - poly_model shows significant predictors: Baths, Building Area, Latitude.
   ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/bc43c80d-b606-4418-8364-9cc6ead2bf8a)
@@ -203,7 +203,7 @@ The p-value of this model is significant (2.401e-16) which means that this model
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/6efe1105-fcae-4ad8-8d4d-208851d6e91d)
 
-📈 Model Comparison – R² Scores
+#### 📈 Model Comparison – R² Scores
 Model	Dataset	R² Score
 fit (Linear)	Full	0.0086
 poly_model	Full	0.0096
@@ -228,7 +228,7 @@ The predictions of the 2 best performing models in the in the dataset without ou
 The R-squared value calculated for these models are 0.1262146 for the poly_model_noout and 0.1269805 for poly_fit_noout, we conclude that the best model is the one showed in the second graph.
 poly_model_noout is also the best performing polynomial model within the whole project.
 
-🤖 SVM (Support Vector Machine) Model
+#### 🤖 SVM (Support Vector Machine) Model
 Applied only to outlier-free dataset
 
 Best performance across all models:
@@ -254,7 +254,7 @@ For real-world applications, non-linear models like SVM are preferable for housi
 
 # 5.	Discussion & Conclusions
 
-📊 Results Summary
+#### 📊 Results Summary
 Three models—Linear Regression, Polynomial Regression, and Support Vector Machine (SVM)—were tested to predict house prices based on key features: Beds, Baths, Building Area, Latitude, and Longitude.
 
 🔹 Linear vs Polynomial Regression
@@ -276,7 +276,7 @@ Applying SVM to the cleaned dataset yielded the best performance:
 - R² = 0.2501, meaning the model explained 25% of price variation.
 - This was the highest performing model of the project.
 
-🔍 Key Insights
+#### 🔍 Key Insights
 - Removing outliers improves models slightly, but at the cost of losing potentially valuable information and introducing bias.
   
 A better approach may be:
