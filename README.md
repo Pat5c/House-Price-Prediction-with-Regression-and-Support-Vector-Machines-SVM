@@ -115,7 +115,7 @@ For each best model:
 - Used to predict validation set outcomes
 - R² scores computed for both training and validation sets to assess model generalization
 
-#### 🤖 Support Vector Regression (SVM)
+#### Support Vector Regression (SVM)
 To improve performance, Support Vector Machines (SVM) are applied to the outlier-free dataset, which already performed best with regression models.
 
 Process:
@@ -126,7 +126,7 @@ Process:
 - SVM model built using e1071::svm() with default parameters
 - Model trained and used to predict house prices
 
-#### 📊 Evaluation Metrics:
+#### Evaluation Metrics:
 MSE (Mean Squared Error)
 MAE (Mean Absolute Error)
 RMSE (Root Mean Squared Error)
@@ -137,6 +137,7 @@ R² score
 # 4.	Results 
 
 #### Linear Assumptions & Dataset Suitability
+
 ✅ Full Dataset:
 
 - No strong linear relationships among predictors (e.g., Baths & Beds have the highest correlation, r = 0.32).
@@ -155,7 +156,7 @@ R² score
   
 - Still fails linear regression assumptions, but less biased than the full dataset.
 
-#### 🧮 Polynomial Regression Models
+#### Polynomial Regression Models
 
 ✅ Full Dataset:
 - poly_model shows significant predictors: Baths, Building Area, Latitude.
@@ -230,7 +231,7 @@ The predictions of the 2 best performing models in the in the dataset without ou
 The R-squared value calculated for these models are 0.1262146 for the poly_model_noout and 0.1269805 for poly_fit_noout, we conclude that the best model is the one showed in the second graph.
 poly_model_noout is also the best performing polynomial model within the whole project.
 
-#### 🤖 SVM (Support Vector Machine) Model
+#### SVM (Support Vector Machine) Model
 Applied only to outlier-free dataset
 
 Best performance across all models:
@@ -247,30 +248,27 @@ Interesting to view, is also the graph below which shows the values of the Price
 
 ![image](https://github.com/Pat5c/House-Price-Prediction-with-Regression-and-Support-Vector-Machines-SVM/assets/124057584/0509feee-28c3-4d3c-95a4-95fb5bd64c01)
 
-✅ Key Takeaways
+#### ✅ Key Takeaways
 - Removing outliers significantly improved model performance.
 - Polynomial models outperformed linear models.
 - SVM model provided the best overall accuracy and generalization.
 
 For real-world applications, non-linear models like SVM are preferable for housing price prediction on this dataset.
 
-# 5.	Discussion & Conclusions
+# 5.	Discussion & Conclusions, Results Summary
 
-#### 📊 Results Summary
 Three models—Linear Regression, Polynomial Regression, and Support Vector Machine (SVM)—were tested to predict house prices based on key features: Beds, Baths, Building Area, Latitude, and Longitude.
 
 🔹 Linear vs Polynomial Regression
 - The dataset violated key assumptions for applying linear regression (e.g., no clear linearity, non-normality, heteroscedasticity), so polynomial regression was explored instead.
-
 - Polynomial regression (poly_model) showed statistically significant relationships:
-Baths (p ≈ 2.81e-13), Building Area (p ≈ 0.014), Latitude (p ≈ 0.037).
-
+  Baths (p ≈ 2.81e-13), Building Area (p ≈ 0.014), Latitude (p ≈ 0.037).
 - However, it explained only 8.66% of the variation in house prices (R² = 0.0866).
 - Residual diagnostics revealed bias and lack of homoscedasticity.
 
 🔹 Impact of Removing Outliers
 - A refined dataset (Price < $500,000) improved performance:
-- poly_fit_noout had stronger significance across all variables and a better R² of 12.7%.
+  poly_fit_noout had stronger significance across all variables and a better R² of 12.7%.
 - Still, the model was not ideal—residuals indicated persistent bias.
 
 🔹 Best Model: Support Vector Machine
